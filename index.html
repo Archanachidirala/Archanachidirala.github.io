@@ -1,1 +1,209 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE 10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  -ms-flex: 50%; /* IE 10 */
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h2>Tabs</h2>
+<p>Click on the buttons inside the tabbed menu:</p>
+
+<div class="tab">
+  <button class="tablinks" onclick="myInfo(event, 'Home')">Home</button>
+  <button class="tablinks" onclick="myInfo(event, 'About Me')">About Me</button>
+  <button class="tablinks" onclick="myInfo(event, 'Contact Me')">Contact Me</button>
+  <button class="tablinks" onclick="myInfo(event, 'Gallery')">Gallery</button>
+</div>
+
+<div id="Home" class="tabcontent">
+  <h3>Home</h3>
+  <p>Archana Chidirala</p>
+</div>
+
+<div id="About Me" class="tabcontent">
+  <h3>About Me</h3>
+  <p>Archana Chidirala,Senior software with 8 years experience</p> 
+</div>
+
+<div id="Contact Me" class="tabcontent">
+  <h3>Contact Me</h3>
+  <p>Let's connect, add me to cliQ. My mail-id:archana.chidirala@zemosolabs.com</p>
+</div>
+<div id="Gallery" class="tabcontent">
+  <h3>My Gallery with a grid of photos</h3>
+  <!-- <a href =imagegrid.html>click here for my grid of photos.</a> -->
+  <div class="header" id="myPhotos">
+    <h1>Image Grid</h1>
+    <p>Click on the buttons to change the grid view.</p>
+    <button class="btn" onclick="one()">1</button>
+    <button class="btn active" onclick="two()">2</button>
+    <button class="btn" onclick="three()">3</button>
+  </div>
+  <div class="row"> 
+    <div class="column">
+      <img src="./image2.jpg" style = "width: 100%;">
+      <img src="./image3.jpg" style = "width: 100%;">
+     </div>
+    <div class="column">
+      <img src="./image4.jpg"style = "width: 50%;">
+      <img src="./image5.jpg" style = "width: 50%;">
+    </div>  
+    <div class="column">
+      <img src="./image2.jpg"style = "width: 25%;">
+      <img src="./image4.jpg" style = "width: 25%;">
+    </div>
+    
+  </div>
+</div>
+
+<script>
+function myInfo(evt, info) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(info).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the elements with class="column"
+var elements = document.getElementsByClassName("column");
+
+// Declare a loop variable
+var i;
+
+// Full-width images
+function one() {
+    for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "55%";  // IE10
+    elements[i].style.flex = "55%";
+  }
+}
+
+// Two images side by side
+function two() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "50%";  // IE10
+    elements[i].style.flex = "50%";
+  }
+}
+
+// Four images side by side
+function three() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "25%";  // IE10
+    elements[i].style.flex = "25%";
+  }
+}
+
+// Add active class to the current button (highlight it)
+var header = document.getElementById("myPhotos");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+   
+</body>
+</html> 
+
